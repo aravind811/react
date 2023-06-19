@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>banking site</title>
+    <link rel="stylesheet" href="bank.css">
+   
+</head>
+<body>
+    <h1>the clock monk</h1>
+    <form id="form" action="bank1.html">
+        <label for="accna">account name</label><br>
+        <input type="text" id="accna" name="accna"><br>
+        <label for="pin">pass</label><br>
+        <input type="password" id="pin" name="lname">
+        <button type="button" form="form" value="checkIn" id="checkIn">check in</button>
+        <button type="button" form="form" value="checkout" onclick="workingHrs()" id="checkout">check out</button>
+      </form>
+      <h3 id="demo"></h3>
+</body>
+<script src="clockmonk.js"></script>
+</html>
