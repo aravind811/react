@@ -37,3 +37,14 @@ array = Array.from(players, ([name, score]) => ({ name, score }));
 console.log(array);
 //var food=new WeakMap([players])
 //console.log(food)
+var wm = new WeakMap();  
+var obj1 = {};  
+var obj2 = {};  
+var obj3= {};  
+wm.set(obj1, "jQuery");  
+wm.set(obj2, "AngularJS");  
+wm.set(obj3,"Bootstrap");  
+document.writeln(wm.get(obj1)+"<br>");  
+document.writeln(wm.get(obj2)+"<br>");  
+document.writeln(wm.get(obj3));  
+ 

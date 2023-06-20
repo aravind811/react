@@ -8,5 +8,5 @@ const student = {
 for ( let key in student ) {
 
     // display the properties
-    console.log(key +"=>" student[key]);
+    console.log(`${key} => ${student[key]}`);
 }
