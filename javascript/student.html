@@ -7,10 +7,10 @@
 </head>
 <body>
     <h1>STUDENTS FORM</h1>
-    <form >
+    <form  method="get" id="details">
         <div >
           <label for="inputEmail4" class="form-label">Email</label>
-          <input type="email" class="form-control" id="inputEmail4">
+          <input type="email" class="form-control" id="inputEmail">
         </div><Br></Br>
         <div >
           <label for="inputPassword4" class="form-label">Password</label>
@@ -48,21 +48,90 @@
           </div><br>
         </div>
         <div class="col-12">
-          <button type="submit" onclick="display()"  class=" btn-primary">Sign in</button>
+          <button type="submit" id="submit"   class=" btn-primary">Sign in</button>
         </div>
         <button type="reset" class="btn btn-primary">reset</button>
+        <br>
+        <button type="button" id="view"> view</button>
+        <br>
+        <button type="button" id="delete"> delete</button>
       </form>
       <h3 id="demo"></h3>
       <h3 id="demo2"></h3>
-      <script> 
-      function display(){
-        if (typeof(Storage) !== "undefined"){
-           var email= localStorage.getItem("inputEmail4")
-           console.log(email);
-        document.getElementById("demo").innerHTML=email;
-        }
-        }
-        
+       <script> 
+       /* window.onload = function() {
+
+// Check for LocalStorage support.
+if (localStorage!=undefined) {
+  /*var form_Responses={
+    emailIp:document.getElementById('inputEmail').value,
+    addressIp: document.getElementById("inputAddress").value
+  }
+  var formData={
+    email:form_Responses.addressIp,
+    address: form_Responses.emailIp
+
+  } 
+    let  storedData=JSON.parse(localStorage.getItem("form_Responses"))
+     var storedData
+  if(!storedData){
+    storedData=[]
+  }
+
+  storedData.
+  localStorage.setItem(form_Responses, JSON.stringify(storedData))*/
+  
+  /*var emailIp=document.getElementById('inputEmail').value
+  var  addressIp=document.getElementById("inputAddress").value
+  localStorage.setItem("email",emailIp)
+  localStorage.setItem("address", addressIp)
+  var details = [];
+details.push(emailIp)
+  details.push(addressIp)
+  localStorage.setItem('details', JSON.stringify(namesArr));
+  var detail2 = JSON.parse(localStorage.getItem("details"));
+  function getAllItems()  
+{    
+    for (i = 0; i <= localStorage.length-1; i++)    
+    {     
+        key = sessionStorage.key(i);    
+        val = sessionStorage.getItem(key);     
+    }   
+}  
+
+
+    
+  }
+  
+
+  // Add an event listener for form submissions
+  
+  
+  document.getElementById('details').addEventListener('view', function() {
+
+document.getElementById('demo').innerHTML= storedData
+    
+  })
+  document.getElementById('details').addEventListener('delete', function() {  
+    localStorage.clear()     
+})}
+
+
+// Check for LocalStorage support.
+
+
+*/
+const signup=e=>{
+  let  emailIp=document.getElementById('inputEmail').value
+  let addressIp=document.getElementById("inputAddress").value
+  console.log(emailIp)
+  console.log(addressIp)
+  let formData=JSON.parse(localStorage.getItem("formData")) || [];
+  let exist= formData.length && JSON.parse(localStorage.getItem('formData')).some(data=>data.e)
+}
+
+
+
       </script>
 </body>
 </html>
