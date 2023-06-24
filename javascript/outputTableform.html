@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Form</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <form id="myForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea class="form-control" id="message" required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset</button>
+      <button type="button" class="btn btn-danger" onclick="clearLocalStorage()">Clear</button>
+    </form>
+
+    <div id="display"></div>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    var form = document.getElementById('myForm');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get the form values
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var message = document.getElementById('message').value;
+
+      // Create an object to store the form response
+      var formData = {
+        name: name,
+        email: email,
+        message: message
+      };
+
+      // Retrieve existing form responses from local storage
+      var existingData = localStorage.getItem('formResponses');
+      var newData = [];
+      if (existingData) {
+        var parsedExistingData = JSON.parse(existingData);
+        newData = [...parsedExistingData, formData];
+        localStorage.setItem('formResponses', JSON.stringify(newData));
+      } else {
+        localStorage.setItem('formResponses', JSON.stringify([formData]));
+      }
+
+      // Reset the form
+      form.reset();
+
+      // Display the stored form responses
+      displayFormResponses();
+    });
+
+    // Function to display the stored form responses in a table
+    function displayFormResponses() {
+      // Get the stored form responses
+      var storedData = localStorage.getItem('formResponses');
+
+      // Parse the stored responses from JSON
+      var formResponses = storedData ? JSON.parse(storedData) : [];
+
+      // Display the form responses in a table
+      var displayElement = document.getElementById('display');
+      displayElement.innerHTML = '';
+
+      if (formResponses.length > 0) {
+        var table = document.createElement('table');
+        table.classList.add('table');
+
+        // Create the table header
+        var tableHeader = document.createElement('thead');
+        var headerRow = document.createElement('tr');
+        var headers = ['Response', 'Name', 'Email', 'Message'];
+
+        for (var h = 0; h < headers.length; h++) {
+          var headerCell = document.createElement('th');
+          headerCell.textContent = headers[h];
+          headerRow.appendChild(headerCell);
+        }
+
+        tableHeader.appendChild(headerRow);
+        table.appendChild(tableHeader);
+
+        // Create the table body
+        var tableBody = document.createElement('tbody');
+
+        for (var i = 0; i < formResponses.length; i++) {
+          var response = formResponses[i];
+          var row = document.createElement('tr');
+          var responseCell = document.createElement('td');
+          responseCell.textContent = i + 1;
+
+          var nameCell = document.createElement('td');
+          nameCell.textContent = response.name;
+
+          var emailCell = document.createElement('td');
+          emailCell.textContent = response.email;
+
+          var messageCell = document.createElement('td');
+          messageCell.textContent = response.message;
+
+          row.appendChild(responseCell);
+          row.appendChild(nameCell);
+          row.appendChild(emailCell);
+          row.appendChild(messageCell);
+
+          tableBody.appendChild(row);
+        }
+
+        table.appendChild(tableBody);
+        displayElement.appendChild(table);
+      }
+    }
+
+    // Function to reset the form
+    function resetForm() {
+      form.reset();
+    }
+
+    // Function to clear the local storage
+    function clearLocalStorage() {
+      localStorage.removeItem('formResponses');
+      displayFormResponses(); // Update the displayed responses
+    }
+
+    window.addEventListener('load', function() {
+      displayFormResponses();
+    });
+  </script>
+</body>
+</html>
