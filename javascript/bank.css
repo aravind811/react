@@ -1,20 +1,58 @@
-#form{
-    border: 10px black thick;
-    background: rgba(255, 255, 255, 0.2);
-    height: 500px;
-    width: 100px;
-    size: 40px;
+form{
+    height: 400px;
+    width: 200px;
+    
+    border: 1px solid wheat;    
+    background:rgba(0, 0, 0, 0.801);
     position: fixed;
-    padding-left: 200px;
-    padding-top: 80px;
+    padding-left: 180px;
+    padding-top: 400px;
+padding-right: 300px;
     font-size: 40px;
     color: aliceblue;
 } 
+#div{
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 body{
-    background:url(images.jpeg) ;
+    background:url(clocks-suits-men-time-wallpaper-preview.jpg) ;
     background-repeat : no-repeat;
     background-size: cover;
+    display: flex;
 }#demo{
     color: aliceblue;
     size: 10px;
 }
+button:hover {
+background-color: #060466;;
+}
+#accna:hover{
+    flex: 1 1 100px;
+
+}
+#div1 {
+    width: 10px;
+    height: 10px;
+    background: red;
+    position: relative;
+    animation: slide-in 2s infinite;
+  }
+  @keyframes slide-in {
+    0% {
+      transform: translateY(100%);
+    }
+    50% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(500%);
+      opacity: 0;
+    }
+  }
+  
