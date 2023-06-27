@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1 style="color: white;">the clock monk</h1>
-    <div id="div1"></div>
+    <div id="div1">
     <form id="form" action="bank1.html">
        <div id="div"> <div class="mb-3">
         <label for="accna" >account name</label><br>
@@ -23,14 +23,16 @@
         <button style="height: 40px; width: 100PX; font-size: large; background-color: black; color:antiquewhite;" onmouseover="this.style.backgroundColor='blue';" onmouseout="this.style.backgroundColor='black';"  type="button" form="form"  value="time"   id="time"><b>hours</b></button>
         <button style="height: 40px; width: 100PX; font-size: large; background-color:rgb(74, 129, 74); color:antiquewhite;" onmouseover="this.style.backgroundColor='green';" onmouseout="this.style.backgroundColor='rgb(74, 129, 74)';" type="submit" form="form" id="submit" ><b>submit</b></button>
         <button style="height: 40px; width: 100PX; font-size: large; background-color:rgb(58, 58, 155) ;color:antiquewhite;" onmouseover="this.style.backgroundColor='violet';" onmouseout="this.style.backgroundColor='rgb(58, 58, 155)';" type="button" id="viewResponses">View </button>
-        <button style="height: 40px; width: 100PX; font-size: large; background-color:rgb(155, 58, 58) ;color:antiquewhite;" onmouseover="this.style.backgroundColor='red';" onmouseout="this.style.backgroundColor='rgb(155, 58, 58)';" type="button" id="viewResponses" onclick="clearLocalStorage()">clear</button>
+        <button style="height: 40px; width: 100PX; font-size: large; background-color:rgb(155, 58, 58) ;color:antiquewhite;" onmouseover="this.style.backgroundColor='red';" onmouseout="this.style.backgroundColor='rgb(155, 58, 58)';" type="button" id="clearResponses" onclick="clearLocalStorage()">clear</button>
         <h3 id="demo" style="font-size: 20px;"></h3>
         <h3 id="demo2" style="font-size: 20px;"></h3>
         <h3 id="demo3" style="font-size: 20px;"></h3></div>
-        <p id="display"></p>
+       
         
     </form> 
-    <p id="display"></p>
+    <p id="display" style="font-size: 20px; color: black;"></p>
+  </div>
+    <style></style>
    
     <script>
         
@@ -80,11 +82,11 @@
             event.preventDefault();
         var nam = document.getElementById("accna").value;
         var city =document.getElementById("city").value;
-        var checkin= String(document.getElementById('demo'))
-        var checkout=String(document.getElementById('demo1'))
-        var total= String(document.getElementById('demo3'))
+        var checkin= document.getElementById("demo").textContent;
+        var checkout=document.getElementById('demo2').textContent;
+        var total=  document.getElementById('demo3').textContent
         var formData = {
-        name: name,
+        name: nam,
         city: city,
         checkin: checkin,
         checkout:checkout,
@@ -104,7 +106,6 @@
 form.reset();
 
 // Display the stored form responses
-displayFormResponses();
 });
 function viewFormResponses() {
   // Get the stored form responses
@@ -199,7 +200,8 @@ viewButton.addEventListener('click', viewFormResponses);
         element2.addEventListener("click", checkOut);
         const element3=document.getElementById("time")
         element3.addEventListener("click",workingHrs)
-      
+        const element4=document.getElementById("clearResponses")
+         element4.addEventListener("click" ,clearLocalStorage)
     </script>
 </body>
 </html>

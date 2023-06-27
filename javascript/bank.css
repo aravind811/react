@@ -1,7 +1,9 @@
 form{
     height: 400px;
     width: 200px;
-    
+    display: flex;
+    left: 50px;
+    justify-content: flex-start;
     border: 1px solid wheat;    
     background:rgba(0, 0, 0, 0.801);
     position: fixed;
@@ -10,6 +12,9 @@ form{
 padding-right: 300px;
     font-size: 40px;
     color: aliceblue;
+    background:url(clocks-suits-men-time-wallpaper-preview.jpg) ;
+    background-repeat : no-repeat;
+    background-size: cover;
 } 
 #div{
     justify-content: center;
@@ -20,7 +25,7 @@ padding-right: 300px;
     transform: translate(-50%, -50%);
 }
 body{
-    background:url(clocks-suits-men-time-wallpaper-preview.jpg) ;
+   
     background-repeat : no-repeat;
     background-size: cover;
     display: flex;
@@ -36,12 +41,12 @@ background-color: #060466;;
 
 }
 #div1 {
-    width: 10px;
-    height: 10px;
-    background: red;
-    position: relative;
-    animation: slide-in 2s infinite;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
   }
+
   @keyframes slide-in {
     0% {
       transform: translateY(100%);
@@ -55,4 +60,37 @@ background-color: #060466;;
       opacity: 0;
     }
   }
-  
+  #div1{
+    display: flex;
+  justify-content: center;
+  align-items: c;
+  } #responseContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    border: 5px black;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow:scroll;
+}
+
+#responseContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    left: 150px;
+}
+
+#responseTable {
+    margin-right: 20px;
+}
+#responseTable {
+  display: flex;
+  justify-content: space-between;
+    margin-right: 20px;
+    
+    
+}
