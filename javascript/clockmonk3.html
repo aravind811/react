@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>banking site</title>
+    <link rel="stylesheet" href="bank.css">
+    <style>
+        /* New CSS styles for positioning the table */
+       
+    </style>
+</head>
+<body>
+    <h1 style="color: white;">the clock monk</h1>
+    <div id="div1">
+    <form id="form" action="bank1.html">
+       <div id="div">
+        <div class="mb-3">
+            <label for="accna">Account Name</label><br>
+            <input type="text" id="accna" name="accna" placeholder="Enter your name" required><br>
+        </div>
+        <div class="mb-3">
+            <label for="city">City</label><br>
+            <input type="text" id="city" name="city" placeholder="Enter your city" required>
+        </div>
+        <button style="height: 40px; width: 100PX; font-size: large;background-color: black; color:antiquewhite;flex-grow:initial" onmouseover="this.style.backgroundColor='blue';" onmouseout="this.style.backgroundColor='black';" type="button" form="form" value="checkIn" id="checkIn"><b>Check-in</b></button><br>
+        <button style="height: 40px; width: 100PX; font-size: large; background-color: black; color:antiquewhite;" onmouseover="this.style.backgroundColor='blue';" onmouseout="this.style.backgroundColor='black';" type="button" form="form" value="checkout" id="checkout"><b>Check-out</b></button><br>
+        <button style="height: 40px; width: 100PX; font-size: large; background-color: black; color:antiquewhite;" onmouseover="this.style.backgroundColor='blue';" onmouseout="this.style.backgroundColor='black';" type="button" form="form"  value="time"   id="time"><b>Hours</b></button>
+        <button style="height: 40px; width: 100PX; font-size: large; background-color:rgb(74, 129, 74); color:antiquewhite;" onmouseover="this.style.backgroundColor='green';" onmouseout="this.style.backgroundColor='rgb(74, 129, 74)';" type="submit" form="form" id="submit"><b>Submit</b></button>
+        <button style="height: 40px; width: 100PX; font-size: large; background-color:rgb(58, 58, 155) ;color:antiquewhite;" onmouseover="this.style.backgroundColor='violet';" onmouseout="this.style.backgroundColor='rgb(58, 58, 155)';" type="button" id="viewResponses">View</button>
+        <button style="height: 40px; width: 100PX; font-size: large; background-color:rgb(155, 58, 58) ;color:antiquewhite;" onmouseover="this.style.backgroundColor='red';" onmouseout="this.style.backgroundColor='rgb(155, 58, 58)';" type="button" id="clearResponses">Clear</button>
+        <h3 id="demo" style="font-size: 20px;"></h3>
+        <h3 id="demo2" style="font-size: 20px;"></h3>
+        <h3 id="demo3" style="font-size: 20px;"></h3>
+      </div>
+    </form> 
+    </div>
+    <div id="responseContainer">
+        <div id="responseTable">
+            <p id="display" style="font-size: 20px; color: black;"></p>
+        </div>
+        <div id="additionalContent">
+        
+        </div>
+    </div>
+
+    <script>
+        var loginTime // Declare the loginTime variable in the global scope
+       
+       var checkIn = () => {
+           loginTime = new Date().getTime(); // Update the loginTime variable with the current time
+           document.getElementById("demo").innerHTML = "Check-in time: " + new Date(loginTime).toLocaleTimeString(); // Display the check-in time
+           document.getElementById("demo").style.color = "white"; // Set the color of the check-in time to white
+       };
+      var logoutTime // Declare the loginTime variable in the global scope
+       var checkOut = () => {
+           logoutTime = new Date().getTime();
+           document.getElementById("demo2").innerHTML = "Check-out time: " + new Date(logoutTime).toLocaleTimeString();
+           document.getElementById("demo2").style.color = "white";
+
+       };
+
+       var workingHrs = () => {
+           if (loginTime && logoutTime) {
+               var timeDiff = logoutTime - loginTime;
+
+               // Calculate hours and minutes
+               var hours = Math.floor(timeDiff / (1000 * 60 * 60));
+               var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+
+               document.getElementById("demo3").innerHTML = "Working hours: " + hours + " hours, " + minutes + " minutes";
+               document.getElementById("demo3").style.color = "white";
+           } else {
+               console.log("Check-in and check-out times are required.");
+           }
+       };
+       var form= document.getElementById("form")
+       form.addEventListener('submit', function(event) {
+           event.preventDefault();
+       var nam = document.getElementById("accna").value;
+       var city =document.getElementById("city").value;
+       var checkin= document.getElementById("demo").textContent;
+       var checkout=document.getElementById('demo2').textContent;
+       var total=  document.getElementById('demo3').textContent
+       var formData = {
+       name: nam,
+       city: city,
+       checkin: checkin,
+       checkout:checkout,
+       total:total
+     };
+     var existingData = localStorage.getItem('formResponses');
+     var newData = [];
+     if (existingData) {
+       var parsedExistingData = JSON.parse(existingData);
+       newData = [...parsedExistingData, formData];
+       localStorage.setItem('formResponses', JSON.stringify(newData));
+     } else {
+       localStorage.setItem('formResponses', JSON.stringify([formData]));
+   }
+
+// Reset the form
+form.reset();
+
+// Display the stored form responses
+});
+function viewFormResponses() {
+ // Get the stored form responses
+ var storedData = localStorage.getItem('formResponses');
+
+ // Parse the stored responses from JSON
+ var formResponses = storedData ? JSON.parse(storedData) : [];
+
+ // Display the form responses in a table
+ var displayElement = document.getElementById('display');
+ displayElement.innerHTML = '';
+
+ if (formResponses.length > 0) {
+   var table = document.createElement('table');
+   table.classList.add('table');
+
+   // Create the table header
+   var tableHeader = document.createElement('thead');
+   var headerRow = document.createElement('tr');
+   var headers = ['Name', 'City', 'Check-in', 'Check-out', 'Total Hours'];
+
+   for (var h = 0; h < headers.length; h++) {
+     var headerCell = document.createElement('th');
+     headerCell.textContent = headers[h];
+     headerRow.appendChild(headerCell);
+   }
+
+   tableHeader.appendChild(headerRow);
+   table.appendChild(tableHeader);
+
+   // Create the table body
+   var tableBody = document.createElement('tbody');
+
+   for (var i = 0; i < formResponses.length; i++) {
+     var response = formResponses[i];
+     var row = document.createElement('tr');
+     
+     var nameCell = document.createElement('td');
+     nameCell.textContent = response.name;
+
+     var cityCell = document.createElement('td');
+     cityCell.textContent = response.city;
+
+     var checkInCell = document.createElement('td');
+     checkInCell.textContent = response.checkin;
+
+     var checkOutCell = document.createElement('td');
+     checkOutCell.textContent = response.checkout;
+
+     var totalHrsCell = document.createElement('td');
+     totalHrsCell.textContent = response.total;
+
+     
+     row.appendChild(nameCell);
+     row.appendChild(cityCell);
+     row.appendChild(checkInCell);
+     row.appendChild(checkOutCell);
+     row.appendChild(totalHrsCell);
+
+     tableBody.appendChild(row);
+   }
+
+   table.appendChild(tableBody);
+   displayElement.appendChild(table);
+ }
+}
+
+// Add event listener to the "View" button
+var viewButton = document.getElementById('viewResponses');
+viewButton.addEventListener('click', viewFormResponses);
+
+   // Function to reset the form
+   function resetForm() {
+     form.reset();
+   }
+
+   // Function to clear the local storage
+   function clearLocalStorage() {
+     localStorage.removeItem('formResponses');
+     viewFormResponses(); // Update the displayed responses
+   }
+
+   window.addEventListener('load', function() {
+     
+     viewFormResponses() });
+
+       const element = document.getElementById("checkIn");
+       element.addEventListener("click", checkIn);
+       const element2= document.getElementById("checkout");
+       element2.addEventListener("click", checkOut);
+       const element3=document.getElementById("time")
+       element3.addEventListener("click",workingHrs)
+       const element4=document.getElementById("clearResponses")
+         element4.addEventListener("click" ,clearLocalStorage)
+
+    </script>
+</body>
+</html>

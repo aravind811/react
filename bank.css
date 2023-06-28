@@ -1,0 +1,20 @@
+#form{
+    border: 10px black thick;
+    background: rgba(255, 255, 255, 0.2);
+    height: 500px;
+    width: 100px;
+    size: 40px;
+    position: fixed;
+    padding-left: 200px;
+    padding-top: 80px;
+    font-size: 40px;
+    color: aliceblue;
+} 
+body{
+    background:url(images.jpeg) ;
+    background-repeat : no-repeat;
+    background-size: cover;
+}#demo{
+    color: aliceblue;
+    size: 10px;
+}
