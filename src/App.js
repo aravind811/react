@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import Home from './home';
+import Navbar from './NAVbar';
 function App() {
+  const title="sweat it out"
+  const dollar=82.5;
+  const link="https://www.javatpoint.com/react-native-environment-setup"
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<div className="App">
+  <Navbar />
+    <div className="content">
+      <h1></h1>
+      <Home />
+      <h3>{dollar}</h3>
+      <a href={link}>REACT SETUP</a>
+    </div></div>
   );
 }
 
