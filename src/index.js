@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './App'
+import Person   from './Demo';
 import reportWebVitals from './reportWebVitals';
+import overall from './Demo';
+import Comment from './demo2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App/>
+    <Comment />
   </React.StrictMode>
 );
 

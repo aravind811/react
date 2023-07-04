@@ -1,6 +1,14 @@
 .App {
-  text-align: center;
+  text-align: right;
 }
+#home{
+  position: absolute;
+  top: 100%;
+  right: 100%;
+  bottom: 0%  ;
+  color: brown;
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +43,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+.home{
+  position: absolute;
+}
+.content{
+  display: flex;
+  justify-content: space-between;
+}
+.homepage-text {
+  position: absolute;
+  bottom: 100;
+  left: 0;
 }
