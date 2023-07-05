@@ -3,22 +3,24 @@ import './App.css';
 import Home from './home';
 import Navbar from './NAVbar';
 import element from './Demo';
+import Toggle from './addButton';
 function App() {
   const title="sweat it out"
-  const dollar=82.5;
-  const link="https://www.javatpoint.com/react-native-environment-setup"
+  
   return (
 <div className="App">
   <Navbar />
 
-  
+  <h1>HOME PAGE</h1>
     <div className="content">
+    <div id='button'> <Toggle /> </div>
     <div className="homepage-text">
     < Home />
-    </div>
-      <h3></h3>
-      <a href={link}>REACT SETUP</a>
+  
     </div></div>
+     
+    <div id='button'> <Toggle /> </div>
+    </div>
   );
 }
 

@@ -1,14 +1,11 @@
+#root{
+  background: linear-gradient(green,blue);
+  opacity: 0.5;
+}
 .App {
-  text-align: right;
+  text-align: center;
+  
 }
-#home{
-  position: absolute;
-  top: 100%;
-  right: 100%;
-  bottom: 0%  ;
-  color: brown;
-}
-
 
 .App-logo {
   height: 40vmin;
@@ -44,15 +41,16 @@
     transform: rotate(360deg);
   }
 }
-.home{
-  position: absolute;
-}
 .content{
-  display: flex;
-  justify-content: space-between;
+  
+  padding-bottom: 800px;
 }
-.homepage-text {
-  position: absolute;
-  bottom: 100;
-  left: 0;
+#button {
+  width: 100px;
+  height: 50px;
+  color: aliceblue;
+  border-radius: 50px 50px ;
+  background-color: #143669;
+  border: 1px solid #ccc;
+  cursor: pointer;
 }
