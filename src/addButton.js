@@ -1,6 +1,36 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+
+/*class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isToggleOn: true };
+
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState((prevState) => ({
+      isToggleOn: !prevState.isToggleOn,
+    }));
+  }
+
+  render() {
+    return (
+      
+      <Button  id="button"  class="btn btn-info"  onClick={this.handleClick}>
+        {this.state.isToggleOn ? "buy" : "added"}
+      </Button>
+    );
+  }
+}
+
+ReactDOM.render(<Toggle />, document.getElementById("root"));
+export default Toggle;*/
+import Button from 'react-bootstrap/Button';
+
 class Toggle extends React.Component {
   constructor(props) {
     super(props);
@@ -18,12 +48,16 @@ class Toggle extends React.Component {
 
   render() {
     return (
-      <button  id="button"   onClick={this.handleClick}>
-        {this.state.isToggleOn ? "buy" : "added"}
-      </button>
+      <Button
+        id="button"
+        className="btn btn-info"
+        onClick={this.handleClick}
+      >
+        {this.state.isToggleOn ? 'buy' : 'added'}
+      </Button>
     );
   }
 }
 
-ReactDOM.render(<Toggle />, document.getElementById("root"));
+ReactDOM.render(<Toggle />, document.getElementById('root'));
 export default Toggle;
