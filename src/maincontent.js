@@ -1,7 +1,55 @@
 import React from "react"
 import ReactDOM  from "react-dom"
-import { Image } from 'react-bootstrap';
+import Image from "react-bootstrap/Image";
+import { ImageProps } from "react-bootstrap";
+import { useState } from "react";
+import { useEffect } from "react";
+import myImage from './crick.jpeg';
+import { useRef } from "react";
 const Main = () => {
+  var count=0;
+  const[text,setText]=useState("buy")
+  const[text1,setText1]=useState("buy")
+  const[text2,setText2]=useState("buy")
+  const[text3,setText3]=useState("buy")
+  const[text4,setText4]=useState("buy")
+  const[text5,setText5]=useState("buy")
+  const[text6,setText6]=useState("buy")
+const click = () => {
+  setText("added")
+  count=count+1;}
+  const click1 = () => {
+    setText1("added");}
+    const click2 = () => {
+      setText2("added");}
+      const click3 = () => {
+        setText3("added");}
+        const click4 = () => {
+          setText4("added");}
+          const click5 = () => {
+            setText5("added");}
+            const click6=()=>{
+              setText6("added");
+            }
+            const MyComponent = () => {
+              const elementRef = useRef(null);
+            
+              useEffect(() => {
+                // Access the DOM element using the ref
+                const element = elementRef.current;
+            
+                // Perform DOM updates
+                element.style.backgroundColor = 'red';
+                element.textContent = 'Updated text';
+            
+                // Clean up any resources if necessary
+                return () => {
+                  // Cleanup code
+                };
+              }, []);
+            
+              return <div ref={elementRef}>Initial text</div>;
+            };
     return ( <div class="row">
     <div class="col-md-9">
       <div class="scrollable-container">
@@ -13,81 +61,89 @@ const Main = () => {
           <div class="col">
               <div class="p-3 border ">
             <div   class="card h-100" >
-            <Image src="crick.jpeg" class="card-img-top" alt="running"/>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+            <img src={myImage} class="card-img-top" alt="running"/></a>
               <div class="card-body">
                 <h5 class="card-title">running</h5>
                 <p class="card-text">"READY","SET","GO". gear up for daily run</p>
-                <a href="#" class="btn btn-primary">buy now</a>
+                <a href="#" class="btn btn-primary" onClick={click}>{text}+{count}</a>
               </div>
             </div>
               </div></div>
               <div class="col">
               <div class="p-3 border ">
             <div   class="card h-100">
-              <Image src="crick.jpeg" class="card-img-top" alt="running"/>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+            <img src={myImage} class="card-img-top" alt="running"/></a>
               <div class="card-body">
                 <h5 class="card-title">cricket</h5>
                 <p class="card-text">"READY","SET","GO". gear up for daily run</p>
-                <a href="#" class="btn btn-primary">buy now</a>
+                <a href="#" class="btn btn-primary" onClick={click1}>{text1}</a>
               </div>
             </div></div></div>
             <div class="col">
             <div class="p-3 border ">
             <div   class="card h-100" >
-            <Image src="crick.jpeg" class="card-img-top" alt="running"/>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+            <img src={myImage} class="card-img-top" alt="running"/></a>
               <div class="card-body">
                 <h5 class="card-title">football</h5>
                 <p class="card-text">"READY","SET","GO". gear up for daily run</p>
-                <a href="#" class="btn btn-primary">buy now</a>
+                <a href="#" class="btn btn-primary" onClick={click2}>{text2}</a>
               </div>
             </div></div></div>
             <div class="col">
             <div class="p-3 border">
             <div    class="card h-100">
-            <Image src="crick.jpeg" class="card-img-top" alt="running"/>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+            <img src={myImage} class="card-img-top" alt="running"/></a>
               <div class="card-body">
                 <h5 class="card-title">boxing</h5>
                 <p class="card-text">"READY","SET","GO". gear up for daily run</p>
-                <a href="#" class="btn btn-primary">buy now</a>
+                <a href="#" class="btn btn-primary" onClick={click3}>{text3}</a>
               </div>
             </div></div></div>
             <div class="col">
             <div class="p-3 border ">
             <div  class="card h-100" >
-            <Image src="crick.jpeg" class="card-img-top" alt="running"/>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+            <img src={myImage} class="card-img-top" alt="running"/></a>
               <div class="card-body">
                 <h5 class="card-title">gym</h5>
                 <p class="card-text">"READY","SET","GO". gear up for daily run</p>
-                <a href="#" class="btn btn-primary">buy now</a>
+                <a href="#" class="btn btn-primary" onClick={click4}>{text4}</a>
               </div>
             </div></div></div>
             <div class="col">
             <div class="p-3 border ">
             <div   class="card h-100">
-            <Image src="crick.jpeg" class="card-img-top" alt="running"/>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+            <img src={myImage} class="card-img-top" alt="running"/></a>
               <div class="card-body">
                 <h5 class="card-title">football</h5>
                 <p class="card-text">"READY","SET","GO". gear up for daily run</p>
-                <a href="#" class="btn btn-primary">buy now</a>
+                <a href="#" class="btn btn-primary" onClick={click5}>{text5}</a>
               </div>
             </div></div></div>
             <div class="col">
             <div class="p-3 border" >
             <div     class="card h-100">
-            <Image src="crick.jpeg" class="card-img-top" alt="running"/>
+            <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+            <img src={myImage} class="card-img-top" alt="running"/></a>
               <div class="card-body">
                 <h5 class="card-title">basketball</h5>
                 <p class="card-text">"READY","SET","GO". gear up for daily run</p>
-                <a href="#" class="btn btn-primary">buy now</a>
+                <a href="#" class="btn btn-primary" onClick={click6}>{text6}</a>
               </div></div></div></div>
               <div class="col">
               <div class="p-3 border ">
               <div   class="card h-100" >
-              <Image  srcSet="crick.jpeg" class="card-img-top" alt="running"/>
+              <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+            <img src={myImage} class="card-img-top" alt="running"/></a>
                 <div class="card-body">
                   <h5 class="card-title">badminton</h5>
                   <p class="card-text">"READY","SET","GO". gear up for daily run</p>
-                  <a href="#" class="btn btn-primary">buy now</a>
+                  <a href="#" class="btn btn-primary" onClick={click}>{text1}</a>
                 </div></div></div></div>
         
       </div>

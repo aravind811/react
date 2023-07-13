@@ -1,41 +1,35 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useReducer,useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 function MyComponent() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
   
+   const Home = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/todos")
+      .then((res) => res.json())
+      .then((data) => setData(data));
+      
+  }, [data]);
+
+  return (
+    <>
+      {data &&
+        data.map((ite) => {
+          return <p >{ite.userId}" ara   "{ite.title}</p>;
+        })}
+    </>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Home />);
+
    
-    useEffect(() => {
-      fetch("https://openweathermap.org/api")
-        .then(result => result.json())
-        .then(
-          (result) => {
-            setIsLoaded(true);
-            setItems(result);
-          },
-          
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        )
-    }, [])
   
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
-      return (
-        <ul>
-          {items.map(item => (
-            <li key={item.id}>
-              {item.city} {item.price}
-            </li>
-          ))}
-        </ul>
-      );
-    }
   }
   export default MyComponent;
+  
