@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Main from "./maincontent";
+import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
 
 function Home() {
-    const [name, line] = useState("hi aravind");
+    const username = useSelector((state) => state.user.username)
+    const [name, line] = useState(username);
     //let name="aravind"
     const click = () => {
         line("thanks for buying");

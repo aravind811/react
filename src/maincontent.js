@@ -5,8 +5,12 @@ import { ImageProps } from "react-bootstrap";
 import { useState } from "react";
 import { useEffect } from "react";
 import myImage from './crick.jpeg';
+import   img2 from "./gym.jpeg"
 import { useRef } from "react";
-const Main = () => {
+
+
+   const Main = () => {
+       // const username = useSelector((state) => state.user.username);
   var count=0;
   const[text,setText]=useState("buy")
   const[text1,setText1]=useState("buy")
@@ -31,26 +35,11 @@ const click = () => {
             const click6=()=>{
               setText6("added");
             }
-            const MyComponent = () => {
-              const elementRef = useRef(null);
-            
-              useEffect(() => {
-                // Access the DOM element using the ref
-                const element = elementRef.current;
-            
-                // Perform DOM updates
-                element.style.backgroundColor = 'red';
-                element.textContent = 'Updated text';
-            
-                // Clean up any resources if necessary
-                return () => {
-                  // Cleanup code
-                };
-              }, []);
-            
-              return <div ref={elementRef}>Initial text</div>;
-            };
-    return ( <div class="row">
+    return ( 
+
+    
+    
+    <div class="row">
     <div class="col-md-9">
       <div class="scrollable-container">
         <div id="grid">
@@ -74,7 +63,7 @@ const click = () => {
               <div class="p-3 border ">
             <div   class="card h-100">
             <a href="https://example.com" target="_blank" rel="noopener noreferrer">
-            <img src={myImage} class="card-img-top" alt="running"/></a>
+            <img src={img2} class="card-img-top" alt="running"/></a>
               <div class="card-body">
                 <h5 class="card-title">cricket</h5>
                 <p class="card-text">"READY","SET","GO". gear up for daily run</p>
@@ -149,8 +138,10 @@ const click = () => {
       </div>
     </div>
   </div>
+  
 
 );
-}
- 
+    }
+
+
 export default Main;
