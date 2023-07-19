@@ -14,11 +14,22 @@ import {configureStore} from '@reduxjs/toolkit'
 import { Provider } from 'react-redux';
 import LoginPage from './login';
 import userReducer from './userReducer';
+import { saveStateToLocalStorage,loadStateFromLocalStorage } from './localStorage';
+const persistedState = loadStateFromLocalStorage();
 
 const store = configureStore({
   reducer: {
     user: userReducer,
   },
+  preloadedState: persistedState,
+});
+store.subscribe(() => {
+  const state = store.getState();
+  const multipleResponses = {
+    user: state.user,
+    // Add other response objects as needed
+  };
+  saveStateToLocalStorage(multipleResponses);
 });
 
 ReactDOM.render(

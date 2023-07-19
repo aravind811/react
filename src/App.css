@@ -1,4 +1,4 @@
-#root{
+#app-root{
   background: linear-gradient(green,blue);
   opacity: 0.5;
 }
@@ -54,3 +54,7 @@
   border: 1px solid #ccc;
   cursor: pointer;
 }
+.container{
+  background: linear-gradient(red,violet);
+}
+;
