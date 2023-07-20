@@ -1,51 +1,36 @@
 // userReducer.js
+import { createSlice } from '@reduxjs/toolkit';
+
 const initialState = {
-  sports:'',
-  username: '',
-  // img: '',
-  // cardTitle: '',
-  // cardBody: ''
-  date:'',
-  members:'',
-  responses: []
+  responses: [],
 };
 
-const userReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'UPDATE_SPORT':
-      return {
-        ...state,
-        sports: action.payload
-      };
-    case 'UPDATE_USERNAME':
-      return {
-        ...state,   
-        username: action.payload
-      };
-      case 'UPDATE_DATE':
-      return {
-        ...state,
-        date: action.payload
-      };
-      case 'UPDATE_MEMBERS':
-      return {
-        ...state,
-        members : action.payload
-      };case 'ADD_RESPONSE':
-      return {
-        ...state,
-        responses: [...state.responses, action.payload], // Add the new response to the array
-      };
-    // case 'ADD_PRODUCT':
-    //   return {
-    //     ...state,
-    //     img: action.payload.img,
-    //     cardTitle: action.payload.cardTitle,
-    //     cardBody: action.payload.cardBody
-    //   };
-    default:
-      return state;
-  }
-};
+const counterSlice = createSlice({
+  name: 'user', // Name of the slice
+  initialState, // Initial state
+  reducers: {
+    updateSport: (state, action) => {
+      state.sports = action.payload;
+    },
+    updateUsername: (state, action) => {
+      state.username = action.payload;
+    },
+    updateDate: (state, action) => {
+      state.date = action.payload;
+    },
+    updateMembers: (state, action) => {
+      state.members = action.payload;
+    },
+    addResponses: (state, action) => {
+      state.responses.push(action.payload);
+    },
+    getResponses: (state, action) => {
+      state.responses = action.payload;
+    },
+  },
+});
 
-export default userReducer;
+// Export the generated reducer and action creators
+export const { updateSport, updateUsername, updateDate, updateMembers, addResponses, getResponses } = counterSlice.actions;
+
+export default counterSlice.reducer;

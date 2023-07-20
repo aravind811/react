@@ -1,9 +1,9 @@
 
-import { Link } from "react-router-dom";
+
 export const saveStateToLocalStorage = (state) => {
     console.log(state,'arar')
     try {
-      const serializedState = JSON.stringify(state.user);
+      const serializedState = JSON.stringify(state.user.responses);
       localStorage.setItem('reduxState', serializedState);
     } catch (error) {
       console.error('Error saving state to local storage:', error);
@@ -12,31 +12,14 @@ export const saveStateToLocalStorage = (state) => {
   
   export const loadStateFromLocalStorage = () => {
     try {
-      const serializedState = localStorage.getItem('reduxState');
-      var newData = [];
-      if (serializedState.length>0) {
-        console.log(newData,"ara")
-        newData.push(serializedState);
-      var parsedData=JSON.parse(serializedState);
-      newData=[...parsedData,serializedState];
-      console.log(newData,"rav")
-      localStorage.setItem('reduxState', JSON.stringify(newData))
-      console.log(serializedState)
-      }
-      else{
-        localStorage.setItem('reduxState', JSON.stringify[serializedState])
-      }
-      var storedData = localStorage.getItem('reduxState');
-
-      // Parse the stored responses from JSON
-      var formResponses = storedData ? JSON.parse(storedData) : [];
-      
-      return JSON.parse(formResponses);
+      const storedData = localStorage.getItem('reduxState');
+      return storedData =JSON.parse(storedData) 
     } catch (error) {
       console.error('Error loading state from local storage:', error);
       return undefined;
     }
   };
+  
   
   //var existingData = localStorage.getItem('formResponses');
 //   var newData = [];
