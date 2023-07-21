@@ -76,11 +76,14 @@
 // }
 
 // export default LoginPage;
-
+import './login.css'
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
+import { updateSport, updateDate, updateMembers, updateUsername, addResponses } from './userReducer';
+import { saveStateToLocalStorage } from './localStorage';
+import { Button } from 'react-bootstrap';
+import { InputGroup } from 'react-bootstrap';
 function Submit() {
   const [sports, setsport] = useState('');
   const [username, setUsername] = useState('');
@@ -103,57 +106,71 @@ function Submit() {
 
   const handledateChange = (e) => {
     setdate(e.target.value);
+    
   };
 
-  // Calculate rupees based on members
-   const rupees = members * 100;
-
+  // just for Calculate rupees
+  const rupees = members * 100;
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform login logic here, such as sending a request to the server
-    dispatch({ type: 'UPDATE_USERNAME', payload: username });
-    dispatch({ type: 'UPDATE_SPORT', payload: sports });
-    dispatch({ type: 'UPDATE_DATE', payload: date });
-    dispatch({ type: 'UPDATE_MEMBERS', payload: members });
-    // Navigate to App.js with the username on top
+  
     const newResponse = {
       sports,
       username,
       date,
       members,
-      rupees
+      rupees,
     };
-    dispatch({ type: 'ADD_RESPONSE', payload: newResponse });
+   
+     dispatch(addResponses(newResponse));
+    
     navigate('/display');
   };
 
+  
   return (
-    <div>
+    <div >
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">sports:</label>
-          <input
+      <form onSubmit={handleSubmit} className='form'>
+
+      <div>
+      <label htmlFor="username">sports:</label>
+        <select className="custom-select"  value={sports}  id='inputGroupSelect01'  onChange={handleUsersportChange} >
+        <option  selected>Choose...</option>
+    <option >cricket</option>
+    <option >football</option>
+    <option >tennis</option>
+  </select>
+          <br></br>
+          {/* <input
             type="text"
             id="sports"
             value={sports}
             onChange={handleUsersportChange}
-          />
+          /> */}
         </div>
+        
         <div>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Username</label>
+          <br></br>
           <input
-            type="text"
+          placeholder='username'
+            type=""
             id="username"
+            required
             value={username}
             onChange={handleUsernameChange}
           />
         </div>
         <div>
           <label htmlFor="members">members:</label>
+          <br></br>
           <input
+             placeholder='nos of peoples'
             type="number"
             id="members"
+            required
             value={members}
             onChange={handlemembersChange}
           />
@@ -161,18 +178,24 @@ function Submit() {
         <br></br>
         <div>
           <label htmlFor="date">date</label>
+          <br></br>
           <input
+           placeholder='date'
             type="datetime-local"
             id="date"
             value={date}
             onChange={handledateChange}
           />
         </div>
-        <button type="submit">submit</button>
-      </form>
+        <br></br>
+        <br></br>
+        <Button type="submit">submit</Button>
+      
+      <br></br>
 
       {/* Display the calculated rupees */}
       <p>Rupees: {rupees}</p>
+      </form>
     </div>
   );
 }

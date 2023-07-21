@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Main from "./maincontent";
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 function Home() {
     const username = useSelector((state) => state.user.username)

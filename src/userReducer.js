@@ -1,36 +1,35 @@
 // userReducer.js
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  responses: [],
+  playerData: [],
 };
 
 const counterSlice = createSlice({
-  name: 'user', // Name of the slice
-  initialState, // Initial state
+  name: "user",
+  initialState,
   reducers: {
-    updateSport: (state, action) => {
-      state.sports = action.payload;
-    },
-    updateUsername: (state, action) => {
-      state.username = action.payload;
-    },
-    updateDate: (state, action) => {
-      state.date = action.payload;
-    },
-    updateMembers: (state, action) => {
-      state.members = action.payload;
-    },
     addResponses: (state, action) => {
-      state.responses.push(action.payload);
+      console.log("payload", action.payload);
+      console.log("state.responses::", state.playerData);
+      if (state.playerData != null) {
+        state.playerData.push(action.payload);
+      }
     },
     getResponses: (state, action) => {
-      state.responses = action.payload;
+      state.playerData = action.payload;
     },
   },
 });
 
 // Export the generated reducer and action creators
-export const { updateSport, updateUsername, updateDate, updateMembers, addResponses, getResponses } = counterSlice.actions;
+export const {
+  updateSport,
+  updateUsername,
+  updateDate,
+  updateMembers,
+  addResponses,
+  getResponses,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;

@@ -15,7 +15,7 @@ import { Provider } from 'react-redux';
 import LoginPage from './login';
 import userReducer from './userReducer';
 import { store } from './store';
-import { saveStateToLocalStorage,loadStateFromLocalStorage } from './localStorage';
+import { saveStateToLocalStorage,loadStateFromLocalStorage} from './localStorage';
 const persistedState = loadStateFromLocalStorage();
 
  store.subscribe(() => {
