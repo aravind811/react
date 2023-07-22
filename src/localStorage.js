@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 export const saveStateToLocalStorage = (state) => {
   console.log(state, "arar");
   try {
-    const serializedState = state.user.playerData;
+    const CurrentState = state.user.playerData;
     //console.log("serializedState::", serializedState);
     const existData = JSON.parse(localStorage.getItem("reduxState"));
     //console.log(existData,"existData")
@@ -11,7 +11,7 @@ export const saveStateToLocalStorage = (state) => {
       values = [...existData];
     }
 
-    values.push(serializedState);
+    values.push(CurrentState);
 
     const finalValues = JSON.stringify(values.flat(1));
     console.log("values::", values);

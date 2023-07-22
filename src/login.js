@@ -84,6 +84,7 @@ import { updateSport, updateDate, updateMembers, updateUsername, addResponses } 
 import { saveStateToLocalStorage } from './localStorage';
 import { Button } from 'react-bootstrap';
 import { InputGroup } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 function Submit() {
   const [sports, setsport] = useState('');
   const [username, setUsername] = useState('');
@@ -135,13 +136,21 @@ function Submit() {
       <form onSubmit={handleSubmit} className='form'>
 
       <div>
-      <label htmlFor="username">sports:</label>
+      {/* <label htmlFor="username">sports:</label>
         <select className="custom-select"  value={sports}  id='inputGroupSelect01'  onChange={handleUsersportChange} >
         <option  selected>Choose...</option>
     <option >cricket</option>
     <option >football</option>
     <option >tennis</option>
-  </select>
+  </select> */}
+  <Form.Select aria-label="Default select example" value={sports} className='input'  onChange={handleUsersportChange}>
+      <option>Open this select menu</option>
+      <option value="cricket">cricket</option>
+      <option value="football">football</option>
+      <option value="basketball">basketball</option>
+    </Form.Select>
+  
+  
           <br></br>
           {/* <input
             type="text"
@@ -152,7 +161,7 @@ function Submit() {
         </div>
         
         <div>
-          <label htmlFor="username">Username</label>
+          {/* <label htmlFor="username">Username</label>
           <br></br>
           <input
           placeholder='username'
@@ -160,11 +169,25 @@ function Submit() {
             id="username"
             required
             value={username}
-            onChange={handleUsernameChange}
-          />
+            onChange={handleUsernameChange} */}
+          {/* /> */}
+          <InputGroup className="mb-3">
+  <InputGroup.Text id="basic-addon1" >@</InputGroup.Text>
+  <Form.Control 
+  className='input'
+  value={username}
+  onChange={handleUsernameChange}
+    style={{ width: "50%" }} // Adjust the width here as per your preference
+    placeholder="Username"
+    aria-label="Username"
+    aria-describedby="basic-addon1"
+    
+  />
+</InputGroup>
         </div>
+        <br></br>
         <div>
-          <label htmlFor="members">members:</label>
+          {/* <label htmlFor="members">members:</label>
           <br></br>
           <input
              placeholder='nos of peoples'
@@ -173,11 +196,26 @@ function Submit() {
             required
             value={members}
             onChange={handlemembersChange}
-          />
+          /> */}
+           <InputGroup className="mb-3">
+  <InputGroup.Text id="basic-addon1" >@</InputGroup.Text>
+  <Form.Control 
+ // className='input'
+  value={members}
+  onChange={handlemembersChange}
+    style={{ width: "50%" }} // Adjust the width here as per your preference
+   
+    placeholder="members"
+    aria-label="Username"
+    type="number"
+    aria-describedby="basic-addon1"
+    
+  />
+</InputGroup>
         </div>
         <br></br>
         <div>
-          <label htmlFor="date">date</label>
+          {/* <label htmlFor="date">date</label>
           <br></br>
           <input
            placeholder='date'
@@ -185,16 +223,30 @@ function Submit() {
             id="date"
             value={date}
             onChange={handledateChange}
-          />
+          /> */}
+           <InputGroup className="mb-3">
+  <InputGroup.Text id="basic-addon1" >@</InputGroup.Text>
+  <Form.Control 
+  value={date}
+  onChange={handledateChange}
+  className='input'
+    style={{ width: "50%" }} // Adjust the width here as per your preference
+    placeholder="date"
+    aria-label="date"
+    type="datetime-local"
+    aria-describedby="basic-addon1"
+    
+  />
+</InputGroup>
         </div>
         <br></br>
-        <br></br>
-        <Button type="submit">submit</Button>
+        
+        <Button className='button' type="submit">submit</Button>
       
       <br></br>
-
+<br />
       {/* Display the calculated rupees */}
-      <p>Rupees: {rupees}</p>
+      <p className='rupees'>Rupees: {rupees}</p>
       </form>
     </div>
   );

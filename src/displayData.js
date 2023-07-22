@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 import { getResponses } from "./userReducer";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import { InputGroup } from "react-bootstrap";
 import { saveStateToLocalStorage,loadStateFromLocalStorage } from "./localStorage";
-
-const DisplayData = () => {
+ const DisplayData = () => {
   const [data, setData] = useState(null);
   const [FullData, setFullData] = useState(false); // Local state to track button click
   const dispatch = useDispatch();
+  const s=useSelector(state=>state.user.playerData)
+  console.log(s,"selector");
 
   useEffect(() => {
     let storedData = JSON.parse(localStorage.getItem("reduxState"));
@@ -32,7 +34,7 @@ const DisplayData = () => {
       <div id="contentBox">
         <h2>Stored Data:</h2>
         {data?.map((response, index) => (
-          <div
+          <div 
             class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2 g-lg-3 g-md-5"
             key={index}
           >
@@ -57,8 +59,8 @@ const DisplayData = () => {
           </div>
         ))}
       </div>
-      <Button onClick={clearLocalStr}>clear</Button>
-      <Link to="/login">Login</Link>
+      <Button style={{background:"black"}} onClick={clearLocalStr}>clear</Button>
+      <Link to="/login"><Button style={{background:"black"}}>Login</Button></Link>
     </>
   );
 };
