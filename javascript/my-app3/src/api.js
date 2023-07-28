@@ -1,5 +1,3 @@
-import { ReactReduxContext } from "react-redux";
-
 const url="https://api.example.com";
 export const fetchData=()=>{
 
@@ -10,7 +8,7 @@ export const fetchData=()=>{
 
     })
 };
-export const postData=()=>{
+export const postData=(data)=>{
     return fetch('${url}/data',{
         method: "post",
         headers:{
@@ -22,7 +20,7 @@ export const postData=()=>{
     ).then((Response)=Response.json())
     
 }
-export const updateData=()=>{
+export const updateData=(data)=>{
     return fetch('${url}/data',{
         method:"put",
         headers:{

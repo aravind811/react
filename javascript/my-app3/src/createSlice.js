@@ -75,15 +75,15 @@ import { createSlice } from "@reduxjs/toolkit";
   },
   reducers:{
     fetchDataStart(state){
-      state.loading=true,
+      state.loading=true;
       state.error=false
     },
     fetchDataSuccess(state , action){
-      state.loading=false,
+      state.loading=false;
       state.data=action.payload
     },
    fetchDataFailure(state){
-    state.loading=false,
+    state.loading=false;
     state.error=true
    }
 
