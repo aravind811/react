@@ -7,7 +7,7 @@ const initialState = {
 
 const counterSlice = createSlice({
   name: "user",
-  initialState,
+    initialState,
   reducers: {
     addResponses: (state, action) => {
       console.log("payload", action.payload);
@@ -16,10 +16,11 @@ const counterSlice = createSlice({
         state.playerData.push(action.payload);
       }
     },
-    getResponses: (state, action) => {
-      state.playerData = action.payload;
-    },
-  },
+    // getResponses: (state, action) => {
+    //   console.log(action,"action");
+    //   state.playerData = action.payload;
+    // },
+  },initialState
 });
 
 // Export the generated reducer and action creators
